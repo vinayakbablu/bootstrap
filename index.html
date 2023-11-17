@@ -1,0 +1,117 @@
+<html>
+
+    <head>
+    <title>Shopping Cart </title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="container-fluid p-5 bg-primary text-white text-center">
+     <h1><mark>Bootstrap Framework</mark></h1><br>  
+    <h1><mark>Login</mark></h1>
+        <form onsubmit="return login">
+            <input type="text" id="username" placeholder="Username" required=""><br>
+            <input type="password" id="password" placeholder="Password" required=""><br>
+            <button type="submit">Login</button>
+        </form>
+        <p>Don't have an account? <a href="#" onclick="showRegistration()"><mark>Register here</mark></a></p>
+    </div>
+
+
+	<div  class="text-white text-center bg-success">
+        <h1><mark>Register</mark></h1>
+
+        <form onsubmit="return register()">
+            <input type="text" id="regUsername" placeholder="Username" required=""><br>
+            <input type="password" id="regPassword" placeholder="Password" required=""><br>
+            <input type="date" id="date of birth" placeholder="dateofbirth" required=""><br>
+            <input type="email" id="email" placeholder="email" required=""><br>
+            <button type="submit">Register</button>
+        </form>
+
+        <p>Already have an account? <a href="#" onclick="showLogin()"><mark>Login here</mark></a></p>
+    </div>
+	<div id="main-section" class="hiden">
+        <h1><mark>Shopping Cart</mark></h1>
+        <div class="products">
+            <div class="product">
+                <h2>Apple</h2>
+                <p>Price: $20</p>
+                <img src="c:\Users\sphn\Desktop\SHIVA 66A7\download.jfif">
+                <button class="add-to-cart" onclick="addToCart('Product 1', 20)">Add to Cart</button>
+            </div>
+            <div class="product">
+                <h2>Banana</h2>
+                <p>Price: $10</p>
+                <img src="c:\Users\sphn\Desktop\SHIVA 66A7\download (1).jfif"">
+                <button class="add-to-cart" onclick="addToCart('Product 1', 10)">Add to Cart</button>
+            </div>
+            <div class="product">
+                <h2>Orange</h2>
+                <p>Price: $10</p>
+                <img src="c:\Users\sphn\Desktop\SHIVA 66A7\download (2).jfif">
+                <button class="add-to-cart" onclick="addToCart('Product 1', 10)">Add to Cart</button>
+            </div>
+    
+            <div class="product">
+                <h2>Mango</h2>
+                <p>Price: $25</p>
+                <img src="c:\Users\sphn\Desktop\SHIVA 66A7\download (3).jfif">
+                <button class="add-to-cart" onclick="addToCart('Product 2', 25)">Add to Cart</button>
+            </div>
+            <div class="product">
+                <h2>Guava</h2>
+                <p>Price: $10</p>
+                <img src="file:///C:/Users/sphn/Desktop/SHIVA%2066A7/30002322_11-fresho-guava-thai.webp">
+                <button class="add-to-cart" onclick="addToCart('Product 1', 10)">Add to Cart</button>
+            </div>
+            </div>
+
+        <div class="cart">
+            <h2><mark>Shopping Cart Items</mark></h2>
+            <ul id="cart-items"></ul>
+            <p>Total: $<span id="total">0</span></p>
+            <button onclick="checksout()">Checkout</button>
+        </div>
+    </div>
+
+<script>
+let cartItems = [];
+
+function addToCart(product, price) {
+    cartItems.push({product, price});
+    updateCart();
+}
+
+function updateCart() {
+    let cartList = document.getElementById("cart-items");
+    let totalElement = document.getElementById("total");
+    let total = 0;
+
+    cartList.innerHTML = "";
+    cartItems.forEach(item => {
+        let listItem = document.createElement("li");
+        listItem.innerText = `${item.product} - $${item.price}`;
+        cartList.appendChild(listItem);
+        total += item.price;
+    });
+
+    totalElement.innerText = total;
+}
+
+
+
+
+// Add product and cart logic similar to the previous example
+
+function checksout() {
+    alert('Thank you for your purchase!');
+}
+
+</script>
+
+
+</body>
+</html>
